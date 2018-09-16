@@ -5,6 +5,8 @@ function moveRover(fieldSize, rovers) {
   		moveForward(fieldSize, firstRover);
   	} else if(firstRover.commands[i] === 'L') {
   		turnLeft(fieldSize, firstRover);
+  	} else {
+  		turnRight(fieldSize, firstRover);
   	}
   }
   return [firstRover.x + ' ' + firstRover.y + ' ' + firstRover.direction];
@@ -40,6 +42,23 @@ function turnLeft(fieldSize, rover) {
   				break;
   			case 'S':
   				rover.direction = 'E';
+  				break;
+  	}
+}
+
+function turnRight(fieldSize, rover) {
+	switch(rover.direction) {
+  			case 'N': 
+  				rover.direction = 'E';
+  				break;
+  			case 'W':
+  				rover.direction = 'N';
+  				break;
+  			case 'E':
+  				rover.direction = 'S';
+  				break;
+  			case 'S':
+  				rover.direction = 'W';
   				break;
   	}
 }
