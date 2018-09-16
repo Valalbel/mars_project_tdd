@@ -30,37 +30,13 @@ function moveForward(fieldSize, rover) {
 }
 
 function turnLeft(fieldSize, rover) {
-	switch(rover.direction) {
-  			case 'N': 
-  				rover.direction = 'W';
-  				break;
-  			case 'W':
-  				rover.direction = 'S';
-  				break;
-  			case 'E':
-  				rover.direction = 'N';
-  				break;
-  			case 'S':
-  				rover.direction = 'E';
-  				break;
-  	}
+	const roverRight = { N: 'W', W: 'S', E: 'N', S: 'E' }
+	rover.direction = roverRight[rover.direction];
 }
 
 function turnRight(fieldSize, rover) {
-	switch(rover.direction) {
-  			case 'N': 
-  				rover.direction = 'E';
-  				break;
-  			case 'W':
-  				rover.direction = 'N';
-  				break;
-  			case 'E':
-  				rover.direction = 'S';
-  				break;
-  			case 'S':
-  				rover.direction = 'W';
-  				break;
-  	}
+	const roverRight = { N: 'E', W: 'N', E: 'S', S: 'W' }
+	rover.direction = roverRight[rover.direction];
 }
 
 module.exports = moveRover;
