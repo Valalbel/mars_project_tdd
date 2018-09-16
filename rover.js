@@ -4,18 +4,17 @@ function rover(fieldSize, rovers) {
   	if(rover.commands[i] === 'M'){
   		switch(rover.direction) {
   			case 'N': 
-  				rover.y += 1;
+  				rover.y == fieldSize.y ? rover.y = fieldSize.y : rover.y += 1;
   				break;
   			case 'W':
-  				rover.x -= 1;
+  				rover.x == 0 ? rover.x = 0 : rover.x -= 1;
   				break;
   			case 'E':
-  				rover.x += 1;
+  				rover.x == fieldSize.x ? rover.x = fieldSize.x :rover.x += 1;
   				break;
   			case 'S':
-  				rover.y -= 1;
+  				rover.y == 0 ? rover.y = 0 : rover.y -= 1;
   				break;
-  			
   		}
   	}
   }
