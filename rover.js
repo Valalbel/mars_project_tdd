@@ -1,18 +1,22 @@
 function moveRovers(fieldSize, rovers) {
 	var result = [];
-  for(var j = 0; j < rovers.length; j++){
-	  for(var i = 0; i < rovers[j].commands.length; i++) {
-	  	if(rovers[j].commands[i] === 'M') {
-	  		moveForward(fieldSize, rovers[j]);
-	  	} else if(rovers[j].commands[i] === 'L') {
-	  		turnLeft(fieldSize, rovers[j]);
-	  	} else {
-	  		turnRight(fieldSize, rovers[j]);
-	  	}
-	  }
-	  result.push(rovers[j].x + ' ' + rovers[j].y + ' ' + rovers[j].direction);
+  for(var i = 0; i < rovers.length; i++){
+	  moveRover(fieldSize, rovers[i]);
+	  result.push(rovers[i].x + ' ' + rovers[i].y + ' ' + rovers[i].direction);
 	}
   return result;
+}
+
+function moveRover(fieldSize, rover) {
+	for(var i = 0; i < rover.commands.length; i++) {
+  	if(rover.commands[i] === 'M') {
+  		moveForward(fieldSize, rover);
+  	} else if(rover.commands[i] === 'L') {
+  		turnLeft(fieldSize, rover);
+  	} else {
+  		turnRight(fieldSize, rover);
+  	}
+  }
 }
 
 function moveForward(fieldSize, rover) {
