@@ -1,8 +1,15 @@
-function rover(fieldSize, rovers) {
-  var rover = rovers[0];
-  for(var i = 0; i < rover.commands.length; i++){
-  	if(rover.commands[i] === 'M'){
-  		switch(rover.direction) {
+function moveRover(fieldSize, rovers) {
+  var firstRover = rovers[0];
+  for(var i = 0; i < firstRover.commands.length; i++){
+  	if(firstRover.commands[i] === 'M') {
+  		moveForward(fieldSize, firstRover);
+  	}
+  }
+  return [firstRover.x + ' ' + firstRover.y + ' ' + firstRover.direction];
+}
+
+function moveForward(fieldSize, rover) {
+	switch(rover.direction) {
   			case 'N': 
   				rover.y == fieldSize.y ? rover.y = fieldSize.y : rover.y += 1;
   				break;
@@ -15,9 +22,7 @@ function rover(fieldSize, rovers) {
   			case 'S':
   				rover.y == 0 ? rover.y = 0 : rover.y -= 1;
   				break;
-  		}
   	}
-  }
-  return [rover.x + ' ' + rover.y + ' ' + rover.direction];
 }
-module.exports = rover;
+
+module.exports = moveRover;
