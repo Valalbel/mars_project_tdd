@@ -1,15 +1,18 @@
-function moveRover(fieldSize, rovers) {
-  var firstRover = rovers[0];
-  for(var i = 0; i < firstRover.commands.length; i++) {
-  	if(firstRover.commands[i] === 'M') {
-  		moveForward(fieldSize, firstRover);
-  	} else if(firstRover.commands[i] === 'L') {
-  		turnLeft(fieldSize, firstRover);
-  	} else {
-  		turnRight(fieldSize, firstRover);
-  	}
-  }
-  return [firstRover.x + ' ' + firstRover.y + ' ' + firstRover.direction];
+function moveRovers(fieldSize, rovers) {
+	var result = [];
+  for(var j = 0; j < rovers.length; j++){
+	  for(var i = 0; i < rovers[j].commands.length; i++) {
+	  	if(rovers[j].commands[i] === 'M') {
+	  		moveForward(fieldSize, rovers[j]);
+	  	} else if(rovers[j].commands[i] === 'L') {
+	  		turnLeft(fieldSize, rovers[j]);
+	  	} else {
+	  		turnRight(fieldSize, rovers[j]);
+	  	}
+	  }
+	  result.push(rovers[j].x + ' ' + rovers[j].y + ' ' + rovers[j].direction);
+	}
+  return result;
 }
 
 function moveForward(fieldSize, rover) {
@@ -39,4 +42,4 @@ function turnRight(fieldSize, rover) {
 	rover.direction = roverRight[rover.direction];
 }
 
-module.exports = moveRover;
+module.exports = moveRovers;

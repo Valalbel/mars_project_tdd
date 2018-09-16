@@ -37,3 +37,7 @@ test('rover turns 90 degrees to the right', () => {
 test('rover turns left and moves forward', () => {
   expect(rover(field, [{x: 1, y: 2, direction: 'N', commands: 'LMLMLMLMM'}])).toEqual(['1 3 N']);
 });
+
+test('two rovers move', () => {
+  expect(rover(field, [{x: 0, y: 0, direction: 'N', commands: 'M'}, {x: 0, y: 0, direction: 'N', commands: 'M'}])).toEqual(['0 1 N', '0 1 N']);
+});
